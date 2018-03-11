@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Session;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
@@ -12,19 +14,16 @@ class UsersController extends Controller
         return view('admin.users.create');
     }
 
-    public function store(Request $request) 
+    public function store(UserRequest $request) 
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+        // Validation is in here -> app/Http/Requests/UserRequest.php
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt('$request->password')
         ]);
-
-        return redirect()->back();
+        // Session::flash('success_message', 'User created successfully!');
+        // return response()->json(['success' => true]);
+        // return redirect()->back();
     }
 }

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <a href="{{ route('user.create') }}" class="btn btn-primary">Create User</a> <span class="text-muted ml-2">Admin only..</span>
                 </div>
             </div>
         </div>
