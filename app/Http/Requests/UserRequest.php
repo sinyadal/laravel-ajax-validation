@@ -40,7 +40,8 @@ class UserRequest extends FormRequest
         return [
             // 'variablename.validatorname' => 'Custom message'
             'name.required' => 'A name is required, bro',
-            'email.email' => 'Cmonnn mate, that is not an email address'
+            'email.email' => 'Cmonnn mate, that is not an email address',
+            'password.confirmed' => 'Pebendeeee, password salah laaaaaaa'
         ];
     }
 }
